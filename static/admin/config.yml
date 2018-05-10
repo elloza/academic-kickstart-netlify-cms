@@ -1,0 +1,335 @@
+backend:   
+  name: git-gateway   
+  branch: master # Branch to update (optional; defaults to master)
+
+media_folder: "static/img/" # Media files will be stored in the repo under static/img/uploads
+public_folder: "/img"
+
+collections:
+
+
+  # GLOBAL CONFIGURATION
+
+  - name: "global_conf"
+    label: "Global Site configuration"
+    files:
+      - file: "config.toml"
+        create: true
+        label: "Global configuration"
+        name: "global_config"
+        fields:
+          - {label: "Base URL", name: "baseurl", widget: "string", default: "/"}
+          - {label: "Title", name: "title", widget: "string", default: "Academic"}
+          - {label: "Copyright", name: "copyright", widget: "string", default: "&copy; 2018"}
+          - {label: "Theme", name: "theme", widget: "string", default: "academic"}
+          - {label: "Enable Emojis", name: "enableEmoji", widget: "boolean", default: true }
+          - {label: "Footnote return link contents", name: "footnotereturnlinkcontents", widget: "string", default: "<sup>^</sup>", required: false}
+          - {label: "Ignore files", name: "ignoreFiles", widget: "list", default: ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"] }
+          - {label: "Preserve Taxonomy Names", name: "enableEmoji", widget: "boolean", default: true }
+          - {label: "Paginate", name: paginate, default: 10, required: false}
+          - {label: "Disqus Short Name", name: "disqusShortname", widget: "string", default: "", required: false}
+          - {label: "Google Analytics", name: "googleAnalytics", widget: "string", default: "", required: false}
+          - {label: "Default Content Language", name: "defaultContentLanguage", widget: "string", default: "en"}
+          - {label: "Set true for Chinese/Japanese/Korean languages", name: "hasCJKLanguage", widget: "boolean", default: false }
+          - {label: "Default Content Language in subdirectory", name: "defaultContentLanguageInSubdir", widget: "boolean", default: false }
+          - {label: "Get last modified date for content from Git?", name: "enableGitInfo", widget: "boolean", default: false }
+          - {label: "Outputs", name: outputs, widget: object, fields: [
+              {label: "Home", name: "home", widget: "list", default: [ "HTML", "CSS", "RSS" ]},
+              {label: "Section", name: "section", widget: "list", default: [ "HTML", "RSS" ]}
+              ]}
+          - {label: "Configure BlackFriday Markdown rendering", name: blackfriday, widget: object, fields: [
+              {label: "opens external links in a new tab", name: "hrefTargetBlank", widget: "boolean", default: true },
+              {label: "enable smart fractions (e. . 5/12 formatted as a fraction).", name: "fractions", widget: "boolean", default: false },
+              {label: "enable smart punctuation substitutions (e.g. smart quotes,dashes, fractions).", name: "smartypants", widget: "boolean", default: false }
+              ]}
+          - {label: "Params", name: params, widget: object, fields: [
+              {label: "Color theme", name: "color_theme", widget: "select", options: ["default", "ocean", "forest", "coffee", "dark", or "1950s"]},
+              {label: "Font", name: "font", widget: "select", options: ["default", "classic", "playfair"] },
+              {label: "Name", name: "name", widget: "string", default: "Alvaro Lozano", required: false},
+              {label: "Role", name: "role", widget: "string", default: "Android Developer & PhD Student", required: false},
+              {label: "Organizations", name: "organizations", widget: "list", fields: [{label: Name, name: name , widget: string},{label: URL, name: url, widget: string}]},
+              {label: "Gravatar", name: "gravatar", widget: "boolean", default: true , required: false},
+              {label: "Avatar", name: "avatar", widget: "image", required: false},
+              {label: "Email", name: "email", widget: "string", default: "loza@usal.es", required: false},
+              {label: "Address", name: "address", widget: "string", default: "Building 1 Room 1, Stanford University, California, 90210, USA", required: false},
+              {label: "Office hours", name: "office_hours", widget: "string", default: "Monday 10:00 to 13:00 or email for appointment", required: false},
+              {label: "Phone", name: "phone", widget: "string", default: "888 888 88 88", required: false},
+              {label: "Skype", name: "skype", widget: "string", default: "echo123", required: false},
+              {label: "Telegram", name: "telegram", widget: "string", default: "@ostias", required: false},
+              {label: "Keybase username", name: "keybase", widget: "string", default: "@ostias", required: false},
+              {label: "Logo", name: "logo", widget: "string", default: "", required: false},
+              {label: "Map provider: 0: No map 1: Google Maps 2: OpenStreetMap (Mapnik) 3: OpenStreetMap (Mapbox)", name: "map", default: 0, required: false},
+              {label: "MAP API KEY", name: "map_api_key", widget: "string", default: "", required: false},
+              {label: "Latitude", name: "latitude", widget: "string", default: "", required: false},
+              {label: "Longitude", name: "longitude", widget: "string", default: "", required: false},
+              {label: "Zoom", name: "zoom", widget: "string", default: 15, required: false},
+              {label: "Date Format Examples: Mon, Jan 2, 2006 or 2006-01-02", name: "date_format", widget: "string", default: "3:04 PM", required: false},
+              {label: "Time Format Examples: 3:04 pm or 15:04", name: "time_format", widget: "string", default: "3:04 PM", required: false},
+              {label: "Reading time", name: "reading_time", widget: "boolean", default: true},
+              {label: "Comment count", name: "comment_count", widget: "boolean", default: true},
+              {label: "Section pager", name: "section_pager", widget: "boolean", default: false},
+              {label: "Math Latex rendering", name: "math", widget: "boolean", default: false},
+              {label: "Highlight Sintaxis", name: "highlight", widget: "boolean", default: false},
+              {label: "Highlight languages", name: "highlight_languages", widget: "list", default: [], required: false},
+              {label: "Enable Social sharing buttons", name: "sharing", widget: "boolean", default: true},
+              {label: "Privacy pack", name: "privacy_pack", widget: "boolean", default: false},
+              {label: "Custom CSS /static/css", name: "custom_css", widget: "list", default: [], required: false},
+              {label: "Custom JS /static/js", name: "custom_js", widget: "list", default: [], required: false},
+              {label: "Publication types", name: "publication_types", widget: "list", default: ['Uncategorized', 'Conference paper',  'Journal article',  'Manuscript',  'Report',  'Book',  'Book section'], required: false},
+              {label: "Talks", name: "talks", widget: "object", fields: [{label: "Show talk time", name: "time" , widget: "boolean", default: true}]},
+              {label: "Projects", name: "projects", widget: "object", fields: [{label: "List publications and talks related to project", name: "list_children" , widget: "boolean", default: true},{label: "Publication list format 0 = Simple 1 = Detailed 2 = APA 3 = MLA", name: publication_format , default: 3}]},
+              {label: "Social", name: "social", widget: "list", fields: [{label: "icon", name: "icon" , widget: "string", default: ""},{label: "social", name: "icon_pack" , widget: "string", default: ""},{label: "link", name: "link" , widget: "string", default: ""}]},
+              {label: "Menus", name: "menus", widget: "object", fields: [{label: "Align the main menu to the right of the page?", name: "align_right" , widget: "boolean", default: true}]}
+              ]}
+
+          - {label: "Menu", name: menu, widget: object, fields: [
+              {label: "Main", name: "main", widget: "list", fields: [
+                {label: "Name of the menu", name: "name" , widget: "string", default: ""},
+                {label: "URL wirh # followed by filename of the desired widget", name: "url" , widget: "string", default: ""},
+                {label: "Weight, from 1 up to X", name: "weight" , default: ""}
+                ]}
+            ]}
+
+          - {label: "Taxonomies", name: taxonomies, widget: object, fields: [
+                {label: "Tag", name: "tag" , widget: "string", default: "tag"},
+                {label: "Category", name: "category" , widget: "string", default: "categories"},
+                {label: "Publication Type", name: "publication_type" , widget: "string", default: "publication_types"}
+            ]}
+
+          - {label: "Languages", name: Languages, widget: object, fields: [
+              {label: "English", name: "en", widget: "object", fields: [
+                {label: "Language code", name: "languageCode" , widget: "string"}
+                ]}]}
+
+
+  # PAGE SECTIONS
+
+  - name: "pages"
+    label: "Pages configuration"
+    files:
+      - file: "content/home/about.md"
+        label: "About"
+        name: "about"
+        fields:
+          - {label: "Widget (Don't modify)", name: "widget", widget: "string", default: "about"}
+          - {label: "Active", name: "active", widget: "boolean", default: true }
+          - {label: "Date", name: "date", widget: "datetime" }
+          - {label: "Weight", name: weight,  default: 5}
+          - {label: "Interests", name: interests, widget: object, fields: [
+              {label: "Interests list", name: "interests", widget: "list", 
+              default: ["Artificial Intelligence"]}]}
+          - {label: "Education", name: "education", widget: "object", fields: [
+              {label: "courses", name: "courses", widget: "list", fields: [
+                {label: Course, name: course , widget: string},
+                {label: Institution, name: institution, widget: string},
+                {label: Year, name: year, default: 2010}]}]}
+          - { label: "Body", name: "body", widget: "markdown", required: false }
+
+      - file: "content/home/contact.md"
+        label: "Contact"
+        name: "contact"
+        fields:
+          - {label: "Widget (Don't modify)", name: "widget", widget: "string", default: "contact"}
+          - {label: "Active", name: "active", widget: "boolean", default: true }
+          - {label: "Date", name: "date", widget: "datetime" }
+          - {label: "Title", name: "title", widget: "string", default: "Contact"}
+          - {label: "Subtitle", name: "subtitle", widget: "string", default: ""}
+          - {label: "Weight", name: weight,  default: 70}
+          - {label: "Automatically link email and phone", name: "autolink", widget: "boolean", default: true }
+
+      - file: "content/home/posts.md"
+        label: "Posts"
+        name: "posts"
+        fields:
+          - {label: "Widget (Don't modify)", name: "widget", widget: "string", default: "posts"}
+          - {label: "Active", name: "active", widget: "boolean", default: true }
+          - {label: "Date", name: "date", widget: "datetime" }
+          - {label: "Title", name: "title", widget: "string", default: "Recent Posts"}
+          - {label: "Subtitle", name: "subtitle", widget: "string", default: ""}
+          - {label: "Weight", name: weight,  default: 40}
+          - {label: "Number of post to show", name: count,  default: 5}
+          - {label: "List Format", name: "list_format", widget: "select", options: ["0", "1"] }
+
+      - file: "content/home/projects.md"
+        label: "Projects"
+        name: "projects"
+        fields:
+          - {label: "Widget (Don't modify)", name: "widget", widget: "string", default: "projects"}
+          - {label: "Active", name: "active", widget: "boolean", default: true }
+          - {label: "Date", name: "date", widget: "datetime" }
+          - {label: "Title", name: "title", widget: "string", default: "Projects"}
+          - {label: "Subtitle", name: "subtitle", widget: "string", default: ""}
+          - {label: "Folder of the content", name: "folder", widget: "string", default: "project"}
+          - {label: "View Legend | List 0 | Cards 1", name: "view", default: 1}
+          - {label: "Weight", name: weight,  default: 50}
+          - {label: "Filter default (number of one of the below)", name: filter_default,  default: 0}
+          - {label: "Filters", name: "filter", widget: "list", fields: [
+                {label: Name, name: name , widget: string},
+                {label: Tag, name: tag, widget: string}]}
+
+      - file: "content/home/publications.md"
+        label: "Publications"
+        name: "publications"
+        fields:
+          - {label: "Widget (Don't modify)", name: "widget", widget: "string", default: "publications"}
+          - {label: "Active", name: "active", widget: "boolean", default: true }
+          - {label: "Date", name: "date", widget: "datetime" }
+          - {label: "Title", name: "title", widget: "string", default: "Publications"}
+          - {label: "Subtitle", name: "subtitle", widget: "string", default: ""}
+          - {label: "Weight", name: weight,  default: 20}
+          - {label: "Number of publications to show", name: count,  default: 5}
+          - {label: "List Format", name: "list_format", widget: "select", options: ["0", "1","3"] }
+          - {label: "Publication type", name: publication_type,  default: -1}
+          - {label: "Filter previous publication type", name: exclude_selected , widget: "boolean", default: true }
+      
+      - file: "content/home/publications_selected.md"
+        label: "Publications Selected"
+        name: "publications_selected"
+        fields:
+          - {label: "Widget (Don't modify)", name: "widget", widget: "string", default: "publications_selected"}
+          - {label: "Active", name: "active", widget: "boolean", default: true }
+          - {label: "Date", name: "date", widget: "datetime" }
+          - {label: "Title", name: "title", widget: "string", default: "Publication Selected"}
+          - {label: "Subtitle", name: "subtitle", widget: "string", default: ""}
+          - {label: "Weight", name: weight,  default: 10}
+          - {label: "List Format", name: "list_format", widget: "select", options: ["0", "1","3"] }
+          - {label: "Publication type", name: publication_type,  default: -1}
+
+      - file: "content/home/tags.md"
+        label: "Tags"
+        name: "tags"
+        fields:
+          - {label: "Widget (Don't modify)", name: "widget", widget: "string", default: "tag_cloud"}
+          - {label: "Active", name: "active", widget: "boolean", default: true }
+          - {label: "Date", name: "date", widget: "datetime" }
+          - {label: "Title", name: "title", widget: "string", default: "Tags"}
+          - {label: "Subtitle", name: "subtitle", widget: "string", default: ""}
+          - {label: "Weight", name: weight,  default: 60}
+          - {label: "Number of tags to show", name: count,  default: 2}
+
+      - file: "content/home/talks.md"
+        label: "Talks"
+        name: "talks"
+        fields:
+          - {label: "Widget (Don't modify)", name: "widget", widget: "string", default: "talks"}
+          - {label: "Active", name: "active", widget: "boolean", default: true }
+          - {label: "Date", name: "date", widget: "datetime" }
+          - {label: "Title", name: "title", widget: "string", default: "Talks"}
+          - {label: "Subtitle", name: "subtitle", widget: "string", default: ""}
+          - {label: "Weight", name: weight,  default: 30}
+          - {label: "Number of talks", name: count,  default: 10}
+          - {label: "List format 0 simple | 1 simple", name: list_format,  default: 0}
+
+      - file: "content/home/teaching.md"
+        label: "Teaching"
+        name: "teaching"
+        fields:
+          - {label: "Widget (Don't modify)", name: "widget", widget: "string", default: "custom"}
+          - {label: "Active", name: "active", widget: "boolean", default: true }
+          - {label: "Date", name: "date", widget: "datetime" }
+          - {label: "Title", name: "title", widget: "string", default: "Teaching"}
+          - {label: "Subtitle", name: "subtitle", widget: "string", default: ""}
+          - {label: "Weight", name: weight,  default: 30}
+          - {label: "Body", name: "body", widget: "markdown", required: false }
+
+  # POSTS
+
+  - name: "blog"
+    label: "Blog post"
+    folder: "content/post/"
+    create: true
+    fields:
+      - { label: "Title", name: "title" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Modification Date", name: "lastmod", widget: "datetime" }
+      - { label: "Draft", name: "draft", widget: "boolean", default: true }
+      - { label: "Tags", name: "tags", widget: "list", default: ["academic"] }
+      - { label: "Summary", name: "summary" }
+      - { label: "Header", name: header, widget: object, fields: [
+              {label: "Featured Image", name: "image", widget: "image", required: false},
+              {label: "Caption", name: "caption", widget: string}]}
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  # PUBLICATIONS
+
+  - name: "publication"
+    label: "Publication"
+    folder: "content/publication/"
+    create: true
+    fields:
+      - { label: "Title", name: "title" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Authors", name: "authors", widget: "list"}
+      - { label: "Publication type, (Uncategorized:0,Conference:1,Journal:2,WIP:3,TechReport:4,Book:5,BookChpt:6)" 
+             ,name: "publication_types", widget: "list", default: ['0', '1']}
+      - {label: "Header", name: header, widget: object, fields: [
+              {label: "Featured Image", name: "image", widget: "image", required: false},
+              {label: "Caption", name: "caption", widget: string}]}
+      - { label: "Publication Name", name: "publication" }
+      - { label: "Publication Name short", name: "publication_short" }
+      - { label: "Abstract", name: "abstract" }
+      - { label: "Abstract short", name: "abstract_short" }
+      - { label: "Image preview", name: "image_preview", widget: "image", required: false }
+      - { label: "Selected publication?", name: "selected", widget: "boolean", default: true }
+      - { label: "Url pdf", name: "url_pdf"}
+      - { label: "Url preprint", name: "url_preprint"}
+      - { label: "Url dataset", name: "url_dataset"}
+      - { label: "Url project", name: "url_project"}
+      - { label: "Url slides", name: "url_slides"}
+      - { label: "Url video", name: "url_video"}
+      - { label: "Url poster", name: "url_poster"}
+      - { label: "Url source", name: "url_source"}
+      - { label: "USE MATH formatting?", name: "math", widget: "boolean", default: true }
+      - { label: "USE Source code highlighting?", name: "math", widget: "boolean", default: true } 
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+
+  # PROJECTS
+
+  - name: "project"
+    label: "Project"
+    folder: "content/project/"
+    create: true
+    fields:
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Title", name: "title" }
+      - { label: "Summary", name: "summary"}
+      - { label: "Image preview", name: "image_preview", widget: "image", required: false }
+      - { label: "Tags", name: "tags", widget: "list", default: ["academic"] }
+      - { label: "External link, Optional external URL for project (replaces project detail page)", name: "external_link", required: false}
+      - { label: "USE MATH formatting?", name: "math", widget: "boolean", default: false }
+      - { label: "Header", name: header, widget: object, fields: [
+              {label: "Featured Image", name: "image", widget: "image", required: false},
+              {label: "Caption", name: "caption", widget: string}]}
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+
+  # TALK
+
+  - name: "talk"
+    label: "Talk"
+    folder: "content/talk/"
+    create: true
+    fields:
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Title", name: "title" ,widget: string}
+      - { label: "Time start", name: "time_start", widget: "datetime" }
+      - { label: "Time end", name: "time_end", widget: "datetime" }
+      - { label: "Abstract", name: "abstract",widget: string}
+      - { label: "Abstract short", name: "abstract_short",widget: string}
+      - { label: "Event", name: "event",widget: string}
+      - { label: "Event URL", name: "event url",widget: string}
+      - { label: "Location (City, Country)", name: "location",widget: string}
+      - { label: "Selected talk?", name: "selected", widget: "boolean", default: false }
+      - { label: "USE MATH formatting?", name: "math", widget: "boolean", default: false }
+      - { label: "PDF URL", name: "url_pdf",widget: string}
+      - { label: "Slides URL", name: "url_slides",widget: string}
+      - { label: "Video URL", name: "url_video",widget: string}
+      - { label: "Source code URL", name: "url_code",widget: string}
+      - { label: "USE Source code highlighting?", name: "math", widget: "boolean", default: true } 
+      - { label: "Header", name: header, widget: object, fields: [
+              {label: "Featured Image", name: "image", widget: "image", required: false},
+              {label: "Caption", name: "caption", widget: string}]}
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+      

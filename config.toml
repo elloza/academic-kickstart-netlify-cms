@@ -1,0 +1,138 @@
+baseurl = "/"
+title = "Academic Theme Netlify CMS"
+copyright = "Elloza 😊 &copy; 2018"
+theme = "academic"
+enableEmoji = true
+footnotereturnlinkcontents = "hey"
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+paginate = 10.0
+disqusShortname = ""
+googleAnalytics = ""
+defaultContentLanguage = "en"
+hasCJKLanguage = false
+defaultContentLanguageInSubdir = false
+enableGitInfo = false
+
+[outputs]
+home = ["HTML", "CSS", "RSS"]
+section = ["HTML", "RSS"]
+
+[blackfriday]
+fractions = true
+hrefTargetBlank = true
+smartypants = true
+
+[params]
+address = "Building 1 Room 1, Stanford University, California, 90210, USA"
+avatar = "/img/bubbles-wide.jpg"
+color_theme = "default"
+comment_count = true
+custom_css = []
+custom_js = []
+date_format = "Jan 2, 2006"
+email = "test@example.org"
+font = "playfair"
+gravatar = false
+highlight = true
+highlight_languages = []
+keybase = ""
+latitude = "37.4275"
+logo = ""
+longitude = "-122.1697"
+map = "2"
+map_api_key = ""
+math = false
+name = "Álvaro Lozano"
+office_hours = "Monday 10:00 to 13:00 or email for appointment"
+phone = "888 888 88 88"
+privacy_pack = false
+publication_types = ["Uncategorized", "Conference paper", "Journal article", "Manuscript", "Report", "Book", "Book section"]
+reading_time = true
+role = "Android Developer and PhD Student"
+section_pager = true
+sharing = true
+skype = "echo123"
+telegram = ""
+time_format = "3:04 PM"
+zoom = 15.0
+
+[params.menus]
+align_right = true
+
+[[params.organizations]]
+name = "University of Salamanca"
+url = "www.usal.es"
+
+[params.projects]
+list_children = true
+publication_format = 3.0
+
+[[params.social]]
+icon = "envelope"
+icon_pack = "fa"
+link = "mailto:test@example.org"
+
+[[params.social]]
+icon = "twitter"
+icon_pack = "fa"
+link = "//twitter.com/GeorgeCushen"
+
+[[params.social]]
+icon = "google-scholar"
+icon_pack = "ai"
+link = "https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ"
+
+[[params.social]]
+icon = "github"
+icon_pack = "fa"
+link = "//github.com/gcushen"
+
+[params.talks]
+time = true
+
+[menu]
+
+[[menu.main]]
+name = "Home"
+url = "#about"
+weight = 1.0
+
+[[menu.main]]
+name = "Publications"
+url = "#publications_selected"
+weight = 2.0
+
+[[menu.main]]
+name = "Posts"
+url = "#posts"
+weight = 3.0
+
+[[menu.main]]
+name = "Projects"
+url = "#projects"
+weight = 4.0
+
+[[menu.main]]
+name = "Teaching"
+url = "#teaching"
+weight = 5.0
+
+[[menu.main]]
+name = "Talks"
+url = "#talks"
+weight = 6.0
+
+[[menu.main]]
+name = "Contact"
+url = "#contact"
+weight = 7.0
+
+[taxonomies]
+category = "categories"
+publication_type = "publication_types"
+tag = "tags"
+
+[Languages]
+
+[Languages.en]
+languageCode = "en-us"
