@@ -1,5 +1,5 @@
 
-![imgdashboard](https://github.com/elloza/academic-kickstart-netlify-cms/blob/master/readmeimg/admin.png)
+![imgdashboard](https://gfycat.com/WeeklySourGuernseycow)
 
 
 # Academic Kickstart Netlify CMS
