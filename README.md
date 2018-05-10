@@ -26,13 +26,31 @@ In addition, pages for the managments of the CMS' sections.
 The original template has been modified in order to match with the structure of pictures of Netlify CMS (almost all the changes are related to images path in the partials of the theme)
 
 
+## Intructions
+
+If you want to deploy this in NetlifyCMS easily, follow the next steps:
+
+1. Deploying this repository in NetlifyCMS
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/elloza/academic-kickstart-netlify-cms)
+
+2. Enable Identity service and Git Gateway
+
+3. Acess to your new site admin page with /admin 
+
+4. In this section you can start editing your site
+
+
+## WIP
+
+- [ ] Bugs in the talks section
+- [ ] Check carefully all fields
+
 
 
 ## References:
 
 Thanks a lot to :
 
-* Blog of @ragasirtahk
+* Blog of [@ragasirtahk](https://github.com/ragasirtahk) --> [Blog](https://www.ragasirtahk.tk/)
 * People of NetlifyCMS Gitter channel
