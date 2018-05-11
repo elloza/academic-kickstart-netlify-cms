@@ -1,6 +1,10 @@
 
-![image](https://github.com/elloza/academic-kickstart-netlify-cms/blob/master/readmeimg/WeeklySourGuernseycow-size_restricted.gif)
+![image]()
 
+
+<p align="center">
+  <img src="https://github.com/elloza/academic-kickstart-netlify-cms/blob/master/readmeimg/WeeklySourGuernseycow-size_restricted.gif">
+</p>
 
 # Academic Kickstart Netlify CMS
 
@@ -79,7 +83,11 @@ If you want to deploy this in NetlifyCMS easily, follow the next steps:
 - [ ] Bugs in the talks section
 - [ ] Check carefully all fields
 
+## Result
 
+<p align="center">
+  <img src="https://github.com/elloza/academic-kickstart-netlify-cms/blob/master/readmeimg/result.gif">
+</p>
 
 ## References:
 
