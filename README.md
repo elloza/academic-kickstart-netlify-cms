@@ -43,13 +43,13 @@ If you want to deploy this in NetlifyCMS easily, follow the next steps:
 
 3. Add postprocessing script for admin zone access
 
-  * Insert this before </head>:
+  * Insert this before end of head:
 
   ```javascript
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   ```
   
-  * Insert this code before </body>:
+  * Insert this code before end of body:
 
   ```javascript
   <script>
