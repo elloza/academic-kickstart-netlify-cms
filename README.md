@@ -30,7 +30,7 @@ In addition, pages for the managments of the CMS' sections.
 The original template has been modified in order to match with the structure of pictures of Netlify CMS (almost all the changes are related to images path in the partials of the theme)
 
 
-## Intructions
+## Instructions
 
 If you want to deploy this in NetlifyCMS easily, follow the next steps:
 
@@ -40,7 +40,7 @@ If you want to deploy this in NetlifyCMS easily, follow the next steps:
 
 2. Enable Identity service and Git Gateway
 
-3. Acess to your new site admin page with /admin 
+3. Access  to your new site admin page with /admin 
 
 4. In this section you can start editing your site
 
