@@ -40,9 +40,38 @@ If you want to deploy this in NetlifyCMS easily, follow the next steps:
 
 2. Enable Identity service and Git Gateway
 
-3. Access  to your new site admin page with /admin 
+3. Add postprocessing script for admin zone access
 
-4. In this section you can start editing your site
+  * Insert this before </head>:
+
+  ```javascript
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  ```
+  
+  * Insert this code before </body>:
+
+  ```javascript
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+  ```
+
+
+4. Give access to users
+
+5  Confirm email and set password 
+
+6. Access  to your new site admin page with /admin 
+
+7. In this section you can start editing your site
 
 
 ## WIP
