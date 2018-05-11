@@ -1,12 +1,9 @@
-
-![image]()
-
-
+# Academic Kickstart Netlify CMS
 <p align="center">
   <img src="https://github.com/elloza/academic-kickstart-netlify-cms/blob/master/readmeimg/WeeklySourGuernseycow-size_restricted.gif">
 </p>
 
-# Academic Kickstart Netlify CMS
+## Description
 
 This repository it based on the [Academic Theme Hugo](https://github.com/gcushen/hugo-academic). It has been integrated with NetlifyCMS and the following content has been added:
 
